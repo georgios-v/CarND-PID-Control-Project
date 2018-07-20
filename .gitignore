@@ -1,3 +1,5 @@
+build/*
+nbproject
 .vscode
 build
 tags
