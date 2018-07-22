@@ -47,7 +47,7 @@ int main() {
 	 * 0.23, 0.000003, 5.3 : max speed 15
 	 * 0.23, 0.03, 2.3     : max speed 30
 	 */
-	pid_steering.Init(0.23, 0.03, 2.3);
+	pid_steering.Init(0.23, 0.0, 5.3);
 	pid_throttle.Init(0.32, 0.000000, 0.023);
 
 	double cte_s = 0.0;
@@ -57,7 +57,7 @@ int main() {
 	bool variable_speed = true;
 	const int N = 99999; /* Controls twiddling frequency, any value above 3000 effectively disables it */
 
-	h.onMessage([&pid_steering, &pid_throttle, &counter, &cte_s, &N](
+	h.onMessage([&pid_steering, &pid_throttle, &counter, &cte_s, &N, &variable_speed](
 			uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode) {
 		// "42" at the start of the message means there's a websocket message event.
 		// The 4 signifies a websocket message
